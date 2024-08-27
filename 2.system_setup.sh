@@ -46,27 +46,22 @@ fi
 #############
 ## Flatpak ##
 #############
-if ! command -v /usr/bin/flatpak >/dev/null; then
-   echo "################### Installing Flatpak and applications ###################"
-   sudo apt install flatpak
+echo "################### Installing Flatpak applications ###################"
+sudo apt install flatpak
 
-   flatpak --system remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-   echo "################### Installing Brave Browser ###################"
-   flatpak install --system -y flathub com.brave.Browser
-   echo "################### Installing Firefox Browser ###################"
-   flatpak install --system -y flathub org.mozilla.firefox
-   echo "################### Installing GIMP ###################"
-   flatpak install --system -y flathub org.gimp.GIMP
-   echo "################### Installing ExtensionManager ###################"
-   flatpak install --system -y flathub com.mattjakeman.ExtensionManager
-   echo "################### Installing Sublime Text ###################"
-   flatpak install --system -y flathub com.sublimetext.three
-   echo "################### Installing Slack ###################"
-   flatpak install --system -y flathub com.slack.Slack
-else
-   echo "################### Flatpak already installed ###################"
-fi
-
+flatpak --system remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+echo "################### Installing Brave Browser ###################"
+flatpak install --system -y flathub com.brave.Browser
+echo "################### Installing Firefox Browser ###################"
+flatpak install --system -y flathub org.mozilla.firefox
+echo "################### Installing GIMP ###################"
+flatpak install --system -y flathub org.gimp.GIMP
+echo "################### Installing ExtensionManager ###################"
+flatpak install --system -y flathub com.mattjakeman.ExtensionManager
+echo "################### Installing Sublime Text ###################"
+flatpak install --system -y flathub com.sublimetext.three
+echo "################### Installing Slack ###################"
+flatpak install --system -y flathub com.slack.Slack
 
 
 ###############
