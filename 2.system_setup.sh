@@ -11,7 +11,7 @@ fi
 
 
 # Install tools and deps
-if -f ~/system.setup.done; then
+if [ -f ~/system.setup.done ]; then
    echo "################### Installing apt packages ###################"
    sudo apt-get update
    sudo apt-get install -y \
