@@ -58,16 +58,20 @@ echo "################### Installing GIMP ###################"
 flatpak install --system -y flathub org.gimp.GIMP
 echo "################### Installing ExtensionManager ###################"
 flatpak install --system -y flathub com.mattjakeman.ExtensionManager
-echo "################### Installing Sublime Text ###################"
-flatpak install --system -y flathub com.sublimetext.three
 echo "################### Installing Slack ###################"
 flatpak install --system -y flathub com.slack.Slack
 
+##################
+## Sublime TExt ##
+##################
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt-get update
+sudo apt-get install -y sublime-text
 
-
-###############
+###########
 ## Brave ##
-###############
+###########
 if ! command -v brave-browser >/dev/null; then
    echo "################### Installing Brave ###################"
    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
