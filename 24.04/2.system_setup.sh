@@ -11,7 +11,7 @@ fi
 
 
 # Install tools and deps
-if [ -f ~/system.setup.done ]; then
+if [ ! -f ~/system.setup.done ]; then
    echo "################### Installing apt packages ###################"
    sudo apt-get update
    sudo apt-get install -y \
@@ -21,9 +21,9 @@ if [ -f ~/system.setup.done ]; then
       lshw pciutils iperf ncdu \
       ca-certificates gnupg gnupg2 pass pinentry-tty \
       barrier jq flatpak make gdb build-essential \
-      libtool autoconf wget openssh-client \
-      libssl-dev python3.10-venv python3-pip \
-      nautilus-image-converter
+      libtool autoconf wget openssh-client openssh-server \
+      libssl-dev python3.12-venv python3-pip \
+      nautilus-image-converter terminator
 
    touch ~/system.setup.done
 fi
@@ -158,7 +158,9 @@ if ! command -v docker >/dev/null; then
    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
    # Configure Permissions
-   sudo groupadd docker
+   if ! grep -w docker /etc/group; then 
+   	sudo groupadd docker
+  fi
    sudo usermod -aG docker $USER
 else
    echo "################### Docker already installed ###################"
